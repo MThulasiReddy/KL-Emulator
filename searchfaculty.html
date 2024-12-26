@@ -24,14 +24,20 @@
             padding: 14px 16px;
             text-decoration: none;
             margin: 0 10px;
+            border-radius: 10px;
         }
         .navbar a:hover {
             background-color: #ddd;
             color: black;
         }
+        .navbar a.active {
+            background-color: white;
+            color: black;
+        }
         .container {
             padding: 20px;
         }
+        
         input[type="text"] {
             width: 100%;
             padding: 10px;
@@ -63,8 +69,9 @@
 
 <div class="navbar">
     <a href="calculator.html">CGPA-Calculator</a>
+    <a href="attendence.html">Attendence-Calculator</a>
     <a href="roadmap.html">Roadmap</a>
-    <a href="searchfaculty.html">Search Faculty</a>
+    <a href="searchfaculty.html" class="active">Search Faculty</a>
     <a href="searchcourses.html">Search Courses</a>
     <a href="about.html">About Us</a>
 </div>

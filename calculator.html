@@ -148,20 +148,30 @@
     }
 
     function calculateCGPA() {
-        const gradePoints = document.querySelectorAll('.grade-points');
-        const credits = document.querySelectorAll('.credits');
-        let totalGradePoints = 0;
-        let totalCredits = 0;
+    const gradePoints = document.querySelectorAll('.grade-points');
+    const credits = document.querySelectorAll('.credits');
+    let totalGradePoints = 0;
+    let totalCredits = 0;
 
-        gradePoints.forEach((gp, index) => {
-            const credit = credits[index].value;
-            totalGradePoints += gp.value * credit;
-            totalCredits += parseFloat(credit);
-        });
+    gradePoints.forEach((gp, index) => {
+        const credit = parseFloat(credits[index].value);
+        const gradePoint = parseFloat(gp.value);
+        
+        // Only consider valid numbers
+        if (!isNaN(credit) && !isNaN(gradePoint) && credit > 0) {
+            totalGradePoints += gradePoint * credit;
+            totalCredits += credit;
+        }
+    });
 
-        const cgpa = totalGradePoints / totalCredits || 0;
+    if (totalCredits > 0) {
+        const cgpa = totalGradePoints / totalCredits;
         document.getElementById('result').textContent = `Your CGPA is ${cgpa.toFixed(2)}`;
+    } else {
+        document.getElementById('result').textContent = 'Please enter valid grade points and credits.';
     }
+}
+
 </script>
 
 </body>
